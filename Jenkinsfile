@@ -19,7 +19,7 @@ pipeline {
          '''
       }
     }
-    stage(pushing image) {
+    stage('pushing image') {
       steps {
         echo 'pushing image'
         echo 'hi'
