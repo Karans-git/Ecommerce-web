@@ -44,7 +44,7 @@ pipeline {
             taskFamily="task-5"
             for task in $(aws ecs list-tasks --cluster $clusterName --family ${taskFamily} | jq -r '.taskArns[]'); do
             aws ecs stop-task --cluster ${clusterName} --task ${task};
-            aws ecs update-service --cluster myapplication --service srv1 --force-new-deployment --region ap-south-1
+            aws ecs update-service --cluster myapplication --service srv1 --region ap-south-1
              
              
 done
