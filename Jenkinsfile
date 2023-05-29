@@ -13,8 +13,10 @@ pipeline {
             sudo su
             whoami
             sudo aws ecr-public get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin public.ecr.aws/d9k3o6i3
-            sudo docker build -t test .
-            sudo docker rmi test
+            sudo docker build -t karansrepo .
+            sudo docker tag karansrepo:latest public.ecr.aws/d9k3o6i3/karansrepo:latest
+            sudo docker push public.ecr.aws/d9k3o6i3/karansrepo:latest
+            sudo docker rmi karansrepo
          '''
       }
     }
