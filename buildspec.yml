@@ -12,7 +12,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image... 
-      - docker build -t karansrepo -f "${DockerFilePath}" .
+      - docker build -t karansrepo . .
       - docker tag karansrepo:latest public.ecr.aws/d9k3o6i3/karansrepo:latest 
       - docker ps -a
       - docker images
@@ -22,6 +22,7 @@ phases:
       - echo Pushing the Docker image...
       - docker push public.ecr.aws/d9k3o6i3/karansrepo:latest
       - echo Writing image definitions file...
+      - CONTAINER_NAME=karansrepo
       - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $REPOSITORY_URI > imagedefinitions.json
 artifacts:
     files: imagedefinitions.json
