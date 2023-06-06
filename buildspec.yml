@@ -10,17 +10,18 @@ phases:
       - REPOSITORY_URI=public.ecr.aws/d9k3o6i3/karansrepo
   build:
     commands:
+      - sudo docker ps -a
       - echo Build started on `date`
       - echo Building the Docker image... 
-      - docker build -t karansrepo .
-      - docker tag karansrepo:latest public.ecr.aws/d9k3o6i3/karansrepo:latest 
-      - docker ps -a
-      - docker images
+      - sudo docker build -t karansrepo .
+      - sudo docker tag karansrepo:latest public.ecr.aws/d9k3o6i3/karansrepo:latest 
+      - sudo docker ps -a
+      - sudo docker images
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push public.ecr.aws/d9k3o6i3/karansrepo:latest
+      - sudo docker push public.ecr.aws/d9k3o6i3/karansrepo:latest
       - echo Writing image definitions file...
       - CONTAINER_NAME=karansrepo
       - printf '[{"name":"%s","imageUri":"%s"}]' $CONTAINER_NAME $REPOSITORY_URI > imagedefinitions.json
