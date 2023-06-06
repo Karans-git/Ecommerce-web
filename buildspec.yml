@@ -10,7 +10,7 @@ phases:
       - REPOSITORY_URI=public.ecr.aws/d9k3o6i3/karansrepo
   build:
     commands:
-      - sudo docker ps -a
+      - docker ps -a
       - echo Build started on `date`
       - echo Building the Docker image... 
       - sudo docker build -t karansrepo .
