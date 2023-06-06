@@ -12,7 +12,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image... 
-      - docker build -t karansrepo . .
+      - docker build -t karansrepo .
       - docker tag karansrepo:latest public.ecr.aws/d9k3o6i3/karansrepo:latest 
       - docker ps -a
       - docker images
